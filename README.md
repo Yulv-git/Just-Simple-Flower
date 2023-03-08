@@ -27,7 +27,5 @@ Just simple flower with MATLAB
 ## Show
 
 ![image](https://user-images.githubusercontent.com/34329208/223776881-1a68ab31-8723-4703-a4f9-04700714dfbd.png)
-
 ![image](https://user-images.githubusercontent.com/34329208/223776906-6b431862-25ea-447f-b480-550f55d1059f.png)
-
 ![image](https://user-images.githubusercontent.com/34329208/223776949-0eff5556-c07f-4dd1-9748-b0da89e3edd7.png)
