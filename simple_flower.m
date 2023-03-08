@@ -1,51 +1,51 @@
 clc;clear all;close all;
 
-%% »æÖÆ»¨°ê
+%% ç»˜åˆ¶èŠ±ç“£
 [x,theta] = meshgrid((0:50)/50,(0:0.5:750)/750*15*pi-2*pi);
 delta = (pi/2)*exp(-theta/(8*pi));
-a = 1-(1-mod(4.5*theta,2*pi)/pi).^6/2;  % "4.5"»¨°êÊý¿ØÖÆ
+a = 1-(1-mod(4.5*theta,2*pi)/pi).^6/2;  % "4.5"èŠ±ç“£æ•°æŽ§åˆ¶
 y = 2*(x.^2-x).^2.*sin(delta);
 b = a.*(x.*sin(delta)+y.*cos(delta));
-figure(1)             % ½¨Á¢¿Õ´°¿Ú
-% ÉèÖÃ±³¾°ÑÕÉ«
-backColor = [1 1 1];  % RGBÖµÉè¶¨  ·ÛÉ«[1 0.97 0.92] ºÚÉ«[0 0 0] °×É«[1 1 1]
+figure(1)
+% è®¾ç½®èƒŒæ™¯é¢œè‰²
+backColor = [1 1 1];  % RGBå€¼è®¾å®š  ç²‰è‰²[1 0.97 0.92] é»‘è‰²[0 0 0] ç™½è‰²[1 1 1]
 Hfig(1)=figure(1);
 set(Hfig(1), 'color', backColor)
-% ÊÓµã¿ØÖÆ£ºview([·½Î»½Ç,¸©ÊÓ½Ç])  ¸©ÊÓ(-72,88)| Õý-¸©ÊÓ(-15,60)| Æ«ÑöÊÓ(-75,-26)
+% è§†ç‚¹æŽ§åˆ¶ï¼šview([æ–¹ä½è§’,ä¿¯è§†è§’])  ä¿¯è§†(-72,88)| æ­£-ä¿¯è§†(-15,60)| åä»°è§†(-75,-26)
 view(-15,60)
-axis image off        % È¥³ýÍ¼Ïñ×ø±ê
-surface(b.*cos(theta),b.*sin(theta),a.*(x.*cos(delta)-y.*sin(delta)),'EdgeC','n','FaceC','r')  % È¾ÉÏºìÉ«µ×
-light('pos',[-0.55 -0.55 1], 'style','local', 'col',[1 0.75 0.75])     % ¹´ÀÕ»¨°êÂÖÀª
-lighting gouraud      % ¹â»¬´¦Àí
+axis image off        % åŽ»é™¤å›¾åƒåæ ‡
+surface(b.*cos(theta),b.*sin(theta),a.*(x.*cos(delta)-y.*sin(delta)),'EdgeC','n','FaceC','r')  % æŸ“ä¸Šçº¢è‰²åº•
+light('pos',[-0.55 -0.55 1], 'style','local', 'col',[1 0.75 0.75])     % å‹¾å‹’èŠ±ç“£è½®å»“
+lighting gouraud      % å…‰æ»‘å¤„ç†
 hold on
 
-%% »æÖÆ»¨ÍÐ
+%% ç»˜åˆ¶èŠ±æ‰˜
 [x1,y1]=meshgrid(-2:0.075:2);
-H=1.25*sin((x1.^2+y1.^2).^0.5)-1.6355;   % µ÷Õû»¨ÍÐµÄ¸ß¶È
-surface(x1/2.25,y1/2.25,H,25*ones(size(H)),'EdgeC','n','FaceC','g');  % "25"µ÷ÑÕÉ«
+H=1.25*sin((x1.^2+y1.^2).^0.5)-1.6355;   % è°ƒæ•´èŠ±æ‰˜çš„é«˜åº¦
+surface(x1/2.25,y1/2.25,H,25*ones(size(H)),'EdgeC','n','FaceC','g');  % "25"è°ƒé¢œè‰²
 light('pos',[-0.75 1 -0.75], 'style','local', 'col',[0.75 1 0.75])
-lighting gouraud      % ¹â»¬´¦Àí
+lighting gouraud
 
-%% »æÖÆ»¨Ö¦
-% ÉÏÖ¦
+%% ç»˜åˆ¶èŠ±æž
+% ä¸Šæž
 [x2,y2]=meshgrid(-0.1:0.001:0.1);
 h=15*sin((x2.^2+y2.^2).^0.5)-1.80;
-surf(x2/5,y2/5,h,25*ones(size(h)));      % "25"µ÷ÑÕÉ«
-% ÏÂÖ¦
-h=100;                % »¨Ö¦³¤¶È
+surf(x2/5,y2/5,h,25*ones(size(h)));      % "25"è°ƒé¢œè‰²
+% ä¸‹æž
+h=100;                % èŠ±æžé•¿åº¦
 d=0.075;
 [A,Z]=meshgrid(0:2*pi/fix(2*pi/(1.2*d)):2*pi,0:h/fix(h/d):h);
 LX=cos(A)/40;
 LY=sin(A)/40;
 h1=surface(LX,LY,Z/40-4.05,'EdgeC','n','FaceC','g');
 light('pos',[-0.15 1 -0.15], 'style','local', 'col',[0.85 1 0.85])
-lighting gouraud      % ¹â»¬´¦Àí
-axis image off        % È¥³ýÍ¼Ïñ×ø±ê
+lighting gouraud
+axis image off
 x=-1:d:1;y=-1:d:1;
 [X,Y]=meshgrid(x,y);
 X(X.^2+Y.^2>1)=NaN;
 Y(X.^2+Y.^2>1)=NaN;
 h2=surface(X/40,Y/40,X*0-4.05);
 
-%% ×ø±êµÈ¼ä¾à»¯
+%% åæ ‡ç­‰é—´è·åŒ–
 axis equal
